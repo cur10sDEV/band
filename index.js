@@ -1,4 +1,4 @@
-let playButton = document.querySelectorAll("button");
+let playButton = document.querySelectorAll(".drum");
 
 
 // Variable Sounds
@@ -59,12 +59,16 @@ function switches(input) {
 
 for (i = 0; i < playButton.length; i++) {
 	playButton[i].addEventListener("click", function () {
-		
-		// Touch Sounds
 
 		let innerWord  = this.innerHTML;
 
 		switches(innerWord);
+
+		let pressedButton = document.querySelector("."+innerWord);
+
+		pressedButton.classList.add("pressed");
+
+		setTimeout(() => pressedButton.classList.remove("pressed"), 1000);
 
 	});
 }
@@ -77,6 +81,14 @@ document.addEventListener("keypress", function(e) {
 	let key = e.key;
 
 	switches(key);
+
+		let activeButton = document.querySelector("."+key);
+
+		console.log(activeButton);
+
+		activeButton.classList.add("pressed");
+
+		setTimeout(() => activeButton.classList.remove("pressed"), 1000);
 
 });
 
